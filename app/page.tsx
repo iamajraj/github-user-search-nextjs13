@@ -10,11 +10,6 @@ interface User {
   html_url: string;
 }
 
-export const metadata: Metadata = {
-  title: "Search Github Users",
-  description: "An app for searching users of github by username",
-};
-
 export default function Home() {
   const [username, setUsername] = useState("");
   const [results, setResults] = useState<User[] | null>(null);
