@@ -1,20 +1,23 @@
+import { Metadata } from "next";
 import "./globals.css";
 import { Dekko } from "next/font/google";
 const font = Dekko({ subsets: ["latin"], weight: "400" });
 
-export const metadata = {
-    title: "Search Github Users",
-    description: "An app for searching users of github by username",
+export const metadata: Metadata = {
+  title: {
+    default: "Search Github Users",
+    template: "%s | User",
+  },
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return (
-        <html lang="en">
-            <body className={font.className}>{children}</body>
-        </html>
-    );
+  return (
+    <html lang="en">
+      <body className={font.className}>{children}</body>
+    </html>
+  );
 }

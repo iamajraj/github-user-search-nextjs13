@@ -1,12 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { Metadata } from "next";
 
 interface User {
   avatar_url: string;
   login: string;
   html_url: string;
 }
+
+export const metadata: Metadata = {
+  title: "Search Github Users",
+  description: "An app for searching users of github by username",
+};
 
 export default function Home() {
   const [username, setUsername] = useState("");
@@ -58,16 +65,15 @@ export default function Home() {
             <p className="mb-5">Searching for {username}</p>
             {results.map((user) => (
               <div className="border w-full max-w-4xl px-7 py-7 flex gap-5 relative">
-                <a
-                  href={user.html_url}
-                  target="_blank"
+                <Link
+                  href={`/${user.login}`}
                   className="absolute -right-4 -top-4 bg-white px-3 py-2 rounded-lg border border-blue-400"
                 >
-                  Link
-                </a>
+                  Details
+                </Link>
                 <img
                   src={user.avatar_url}
-                  alt=""
+                  alt={user.login}
                   className="w-[100px] rounded-full"
                 />
                 <div className="w-full flex flex-col justify-between">
